@@ -41,6 +41,8 @@ Then open `examples/vault/` (from the repo root) to see the real shape of the da
 
 **Scope, stated plainly:** this detects tampering with existing entries inside a stream. It does not by itself stop someone who can already write the file from truncating it or replacing the whole chain with a fresh, internally consistent one. Guarding against that (off-box backup and external anchoring) is future work, tracked in the [roadmap](docs/ROADMAP.md).
 
+To see what that record is *for*, run the [evidence-backed reconstruction demo](examples/demo/reconstruct.py): it rebuilds a relationship from the sample vault, cites every line to its source, and refuses to run on a chain it cannot verify.
+
 ## Repo map
 
 | Path | What's there |

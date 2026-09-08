@@ -11,3 +11,14 @@ jobs:
         run: cd examples/hashchain && python3 test_hashchain.py
       - name: verify shipped sample timeline
         run: cd examples/hashchain && python3 lifegraph_hashchain.py verify ../vault/sample_timeline.jsonl
+      - name: reconstruction demo runs
+        run: cd examples/demo && python3 reconstruct.py
+      - name: reconstruction refuses a tampered chain
+        run: |
+          cp examples/vault/sample_timeline.jsonl /tmp/t.jsonl
+          sed -i "s/meetup/HACKED/" /tmp/t.jsonl
+          if (cd examples/demo && python3 reconstruct.py --timeline /tmp/t.jsonl); then
+            echo "ERROR: demo did not refuse a tampered chain"; exit 1
+          else
+            echo "correctly refused tampered chain"
+          fi
