@@ -1,0 +1,42 @@
+# LIFE OS public repo carries ONLY documentation and shareable, generalized code.
+# Personal data and secrets must never enter this repository.
+
+# secrets and keys
+*.env
+*.key
+*.pem
+.lifeos_model_keys.env
+**/secrets/**
+
+# personal life data (never publish)
+Life/
+**/Journal/**
+**/journals/**
+player_map*
+*_carries.md
+**/Mind_Journals/**
+*places_data.json*
+*flights_ledger*
+**/uploads/**
+
+# media and derived
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.mov
+*.pdf
+*.docx
+*.xlsx
+*.db
+*.bak.*
+
+# build noise
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+.DS_Store
+
+# locks
+*.lock
