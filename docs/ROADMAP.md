@@ -6,7 +6,7 @@ LifeGraph is a running system with real gaps. This is an honest account of where
 
 - Self-hosted server (FastAPI + Caddy) with a progressive web app across many life domains.
 - ~35 Minds journaling on a schedule through a cost-capped, model-agnostic broker.
-- Append-only life and per-entity timelines with unique IDs.
+- Life and per-entity timelines with unique IDs (plain JSONL), plus a standalone, tested hash-chain verification module (shipped in this repo).
 - A nightly multi-model council that reviews the system's work with an evidence gate.
 - A self-healing health monitor with alerting.
 
@@ -16,7 +16,7 @@ These are the things that move LifeGraph from "many impressive parts" to "one in
 
 1. **Off-site, versioned, encrypted backup.** Sync is not disaster recovery. A strict ignore policy, a clean baseline, and a daily push to an independent remote with a success alert.
 2. **Enforcement layer.** A small validation service that every significant write is routed through, so the rules are processes, not suggestions.
-3. **Append-only hash-chained journaling.** Every journal and timeline write stores the hash of the prior entry, making the record tamper-evident.
+3. **Hash-chaining across every write path.** The standalone module is built and tested; the remaining work is routing every journal and timeline write through it, so the whole record is tamper-evident, not only the streams that already use it.
 4. **Minds as a coordinated team.** A chief-of-staff router that assigns each event to an owning Mind with an urgency and a follow-up, instead of specialists acting in parallel.
 5. **The Illuminations-to-Resonances loop.** Every insight becomes a concrete experiment with a metric and a check-in, and the system tracks whether it actually changed behavior.
 6. **One memory, not many.** Consolidate overlapping stores into the single canonical Vault so retrieval has one clean source of truth.

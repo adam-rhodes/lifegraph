@@ -8,23 +8,38 @@ Three commitments define it:
 
 - **You own the data.** Plain files on your hardware. No lock-in, readable in any editor a decade from now.
 - **The record is the product.** Append-only, timestamped, uniquely identified, and hash-chained so tampering is detectable. The memory is an audit trail, not a vector-DB black box.
-- **Intelligence is a team, not a chatbot.** Named specialists collaborate and journal in the open, routed through a model-agnostic broker so no vendor is load-bearing.
+- **Intelligence is a team, not a chatbot.** Named specialists collaborate and journal in the open, routed through a model-agnostic broker so no vendor is load-bearing. Your data stays on your disk; only the specific text a task needs is sent to a model, and the broker can point at local models instead of commercial APIs.
 
-> **Status: early and honest.** A working system running daily for its first user, not a finished product. This README marks what works versus what is still aspirational. We are building in the open on purpose.
+> **Status: early and honest.** A working system running daily for its first user, not a finished product. **This repository ships the concept, the data schemas, and the runnable hash-chain core.** The full runtime (the FastAPI server, the Minds, the broker, the web app) runs on the author's private instance and is being sanitized for public release. This README marks what works versus what is still aspirational, and the [roadmap](docs/ROADMAP.md) tracks the gap. We are building in the open on purpose.
 
 ---
 
 ## Try the core guarantee in 30 seconds
 
-The memory guarantee (append-only, tamper-evident history) is real, tested code you can run right now:
+The core journaling primitive is real, tested code you can run right now. It is a hash-chained JSONL log that detects any in-place edit, deletion, or reordering of past entries in a stream:
 
 ```bash
-git clone <this repo> && cd lifegraph/examples/hashchain
+git clone https://github.com/adam-rhodes/lifegraph && cd lifegraph/examples/hashchain
 python3 test_hashchain.py                                   # tamper / delete / reorder detection
 python3 lifegraph_hashchain.py verify ../vault/sample_timeline.jsonl   # verify a shipped timeline
 ```
 
-Then open `examples/vault/` to see the real shape of the data: a hash-chained timeline, a Mind's journal, and a knowledge-graph node.
+You should see the tests pass and the shipped timeline verify:
+
+```
+ALL PASS: clean-chain, genesis, linkage, tamper-detect, delete-detect, reorder-detect
+OK {'entries': 3, 'head': '...'}
+```
+
+Now edit any character inside `examples/vault/sample_timeline.jsonl` and run the `verify` command again. It names the exact entry where the chain breaks:
+
+```
+BROKEN {'broken_at': 2, 'reason': 'entry_hash mismatch (content altered)', 'entries_ok': 2}
+```
+
+Then open `examples/vault/` (from the repo root) to see the real shape of the data: a hash-chained timeline, a Mind's journal, and a knowledge-graph node.
+
+**Scope, stated plainly:** this detects tampering with existing entries inside a stream. It does not by itself stop someone who can already write the file from truncating it or replacing the whole chain with a fresh, internally consistent one. Guarding against that (off-box backup and external anchoring) is future work, tracked in the [roadmap](docs/ROADMAP.md).
 
 ## Repo map
 
@@ -57,14 +72,14 @@ Then open `examples/vault/` to see the real shape of the data: a hash-chained ti
      |
   Edge         Caddy (TLS, static + reverse proxy)
      |
-  API          FastAPI + enforcement / validation layer   <- every significant write passes through
+  API          FastAPI + enforcement / validation layer   <- significant writes routed through (partial today)
      |
   Intelligence Minds runtime (scheduled + on demand)
                model broker: Claude / GPT / Gemini / local, with fallbacks + spend cap
      |
   Memory       The Vault: Markdown + JSONL, unique IDs, append-only hash-chained timelines
      |
-  Durability   owned hardware -> replicated (Syncthing/iCloud) -> versioned off-site git backup
+  Durability   owned hardware -> replicated (Syncthing/iCloud) -> [planned] versioned off-site encrypted git backup
 ```
 
 Full detail in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
@@ -73,7 +88,7 @@ Full detail in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 
 - Self-hosted server (FastAPI + Caddy) with a progressive web app across many life domains.
 - ~35 scheduled Minds journaling through a cost-capped, model-agnostic broker (observed cost so far: a few dollars a month against a hard $200 cap).
-- Append-only, hash-chained timelines with unique IDs. The hash-chain module ships here with a test suite.
+- Append-only timelines with unique IDs. The hash-chain module ships in this repo with a test suite; wiring it across every write path is in progress (see roadmap).
 - A nightly multi-model council that reviews the system's own work with an evidence gate.
 - A self-healing health monitor with alerting.
 

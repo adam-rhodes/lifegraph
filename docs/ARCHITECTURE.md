@@ -18,7 +18,7 @@ This document describes how LifeGraph is put together and why. It aims to be spe
                  append-only hash-chained timelines, a knowledge graph view
      |
   Durability     canonical on owned hardware
-                 -> replicated (Syncthing / iCloud) -> versioned git backup (off-site)
+                 -> replicated (Syncthing / iCloud) -> [planned] versioned, encrypted git backup (off-site)
 ```
 
 ## Memory: disk as truth
@@ -37,7 +37,7 @@ Why files: longevity (readable in any editor, in any decade), portability (no lo
 There is a master timeline for the whole life and one timeline per entity. The rules:
 
 - Entries are only ever **added**. Found history is backfilled at its true date; corrections supersede prior entries additively; nothing is silently removed.
-- Each entry stores the **hash of the prior entry**, forming a chain. Any tampering with history breaks the chain and is detectable.
+- Each entry stores the **hash of the prior entry**, forming a chain. Any in-place edit, deletion, or reordering of existing entries breaks the chain and is detectable by `verify()`. Guarding against truncation or wholesale replacement of a file is a further layer (off-box backup, external anchoring), still to build.
 - Timelines compose: an entity's timeline rolls up into the master.
 
 ## Retrieval: named-path first
@@ -52,13 +52,13 @@ Retrieval is a discipline before it is an algorithm. The system reads the releva
 
 ## Enforcement: rules as processes
 
-The design goal is that constraints are validated by code, not requested from a model. A write to a protected area passes through a validation layer that checks naming, refuses unauthorized deletion, and appends the hash-chain link. This is the layer that turns "the system should never lose anything" from a wish into a guarantee. It is an active build area; parts are enforced today and parts are being moved from convention into code.
+The design goal is that constraints are validated by code, not requested from a model. A write to a protected area passes through a validation layer that checks naming, refuses unauthorized deletion, and appends the hash-chain link. This is the layer that is meant to turn "the system should never lose anything" from a wish into a guarantee. It is an active build area: some paths are wired through it today, others still rely on convention.
 
 ## Deployment: self-hosted by default
 
 - Runs on a small VPS or a home machine. TLS and routing via Caddy; the API in Python; a progressive web app for the client so there is nothing to install.
 - The canonical data lives on hardware the user controls and is **replicated** to their devices. Cloud copies are replicas of the canonical, never the reverse.
-- **Backup** is versioned (git) with an off-site, encrypted push, treated as disaster recovery distinct from sync.
+- **Backup** (in progress) is versioned (git) with an off-site, encrypted push, treated as disaster recovery distinct from sync. Until it is configured, replication is not yet a true off-site backup.
 - A **health monitor** checks services, disk, and endpoints on a timer, self-heals common failures, and alerts on real problems.
 
 ## What this is not

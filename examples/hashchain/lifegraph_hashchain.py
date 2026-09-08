@@ -1,15 +1,20 @@
 """
 LifeGraph append-only hash-chained journaling.
 
-Every entry written to a stream carries the sha256 of the previous entry, so the
-record is tamper-evident: altering, reordering, or deleting any past entry breaks
-the chain and is detected by verify().
+Every entry written to a stream carries the sha256 of the previous entry, so any
+in-place alteration, reordering, or deletion of a past entry within that stream
+breaks the chain and is detected by verify(). This detects tampering with existing
+entries; it does not by itself prevent truncation or wholesale replacement of the
+file (that needs off-box backup / external anchoring).
 
 Design principles honored: disk-as-truth (plain JSONL), append-only (never rewrites
 prior lines), enforcement-in-code (a single choke point for writes).
 """
-import json, hashlib, os, tempfile, datetime, fcntl
-from zoneinfo import ZoneInfo
+import json, hashlib, os, tempfile, datetime
+try:
+    import fcntl  # POSIX advisory file locking
+except ImportError:  # Windows has no fcntl; locking becomes a no-op (single-writer discipline still applies)
+    fcntl = None
 
 GENESIS = "0" * 64
 
@@ -39,11 +44,12 @@ def append(path: str, data: dict, ts: str = None) -> dict:
     """Append one entry to the hash-chained stream at `path`. Returns the stored entry."""
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     if ts is None:
-        ts = datetime.datetime.now(ZoneInfo("America/Chicago")).strftime("%Y-%m-%dT%H:%M:%S%z")
+        ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S%z")
     # lock so concurrent writers cannot interleave and break the chain
     lockpath = path + ".lock"
-    with open(lockpath, "w") as lock:
-        fcntl.flock(lock, fcntl.LOCK_EX)
+    with open(lockpath, "a") as lock:
+        if fcntl:
+            fcntl.flock(lock, fcntl.LOCK_EX)
         try:
             prev = _last_hash(path)
             entry = dict(data)
@@ -54,7 +60,8 @@ def append(path: str, data: dict, ts: str = None) -> dict:
                 f.write(json.dumps(entry, ensure_ascii=False) + "\n")
             return entry
         finally:
-            fcntl.flock(lock, fcntl.LOCK_UN)
+            if fcntl:
+                fcntl.flock(lock, fcntl.LOCK_UN)
 
 def verify(path: str):
     """Walk the chain. Returns (ok: bool, detail: dict)."""
