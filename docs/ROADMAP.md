@@ -27,6 +27,18 @@ These are the things that move LifeGraph from "many impressive parts" to "one in
 - A contribution model for a multi-user, cross-collaboration layer.
 - Native mobile.
 
+## Help wanted
+
+Good places for a first contribution. None require access to the private runtime; they all live in this repo against the shipped module and samples.
+
+- **Cross-platform file locking.** The hash-chain module uses POSIX `fcntl`; on Windows locking is currently a no-op. Add a portable lock (e.g. `msvcrt` or the `fasteners` package) behind the same interface, with a test.
+- **A small CLI.** Wrap `append`, `verify`, and the reconstruction demo into one `lifegraph` command that works over any vault directory, not just the sample paths.
+- **Detecting tail truncation.** Today truncating the last entries leaves a valid prefix that still verifies (documented in the tests as a known gap). Propose and prototype an approach: a periodic Merkle root or entry count committed off-box, or an append-only length receipt.
+- **A source adapter.** Sketch the common adapter interface and implement one read-only adapter (e.g. iCal, mbox) that emits timeline entries in the shipped JSONL shape.
+- **Concurrency tests.** Add a test that hammers `append` from several processes on POSIX and proves the chain never corrupts.
+
+Open an issue to claim one, or just open a PR. Honest pushback on the design is equally welcome.
+
 ## How priorities are set
 
 Priorities come from three sources kept in agreement: the concept of operations, the system's own honest self-assessment, and independent review by multiple models. When they disagree, that disagreement is logged and resolved in the open.

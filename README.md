@@ -1,5 +1,7 @@
 # LifeGraph
 
+[![CI](https://github.com/adam-rhodes/lifegraph/actions/workflows/ci.yml/badge.svg)](https://github.com/adam-rhodes/lifegraph/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Status: early](https://img.shields.io/badge/status-early%20%26%20honest-orange.svg)](docs/ROADMAP.md)
+
 **A local-first, self-hosted personal operating system.** It stores your life as plain Markdown and JSONL files on hardware you own, and runs a team of scheduled AI agents that read those files instead of a black-box vector database. It already runs daily for its first user across calendar, journal, people, places, health, and finances, on an append-only, tamper-evident record you can open in a text editor.
 
 Most tools give you a calendar here, notes there, a chatbot somewhere else. None see the whole picture, and none actually remember you. LifeGraph is the opposite: one system that treats your whole life as connected, keeps a durable record you control, and runs specialists ("Minds") that work across every domain and write their reasoning to disk.
