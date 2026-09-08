@@ -1,8 +1,8 @@
-# LIFE OS
+# LifeGraph
 
 **A local-first, self-hosted personal operating system.** It stores your life as plain Markdown and JSONL files on hardware you own, and runs a team of scheduled AI agents that read those files instead of a black-box vector database. It already runs daily for its first user across calendar, journal, people, places, health, and finances, on an append-only, tamper-evident record you can open in a text editor.
 
-Most tools give you a calendar here, notes there, a chatbot somewhere else. None see the whole picture, and none actually remember you. LIFE OS is the opposite: one system that treats your whole life as connected, keeps a durable record you control, and runs specialists ("Minds") that work across every domain and write their reasoning to disk.
+Most tools give you a calendar here, notes there, a chatbot somewhere else. None see the whole picture, and none actually remember you. LifeGraph is the opposite: one system that treats your whole life as connected, keeps a durable record you control, and runs specialists ("Minds") that work across every domain and write their reasoning to disk.
 
 Three commitments define it:
 
@@ -19,9 +19,9 @@ Three commitments define it:
 The memory guarantee (append-only, tamper-evident history) is real, tested code you can run right now:
 
 ```bash
-git clone <this repo> && cd lifeos/examples/hashchain
+git clone <this repo> && cd lifegraph/examples/hashchain
 python3 test_hashchain.py                                   # tamper / delete / reorder detection
-python3 lifeos_hashchain.py verify ../vault/sample_timeline.jsonl   # verify a shipped timeline
+python3 lifegraph_hashchain.py verify ../vault/sample_timeline.jsonl   # verify a shipped timeline
 ```
 
 Then open `examples/vault/` to see the real shape of the data: a hash-chained timeline, a Mind's journal, and a knowledge-graph node.

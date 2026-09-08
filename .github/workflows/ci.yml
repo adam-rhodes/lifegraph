@@ -10,4 +10,4 @@ jobs:
       - name: hash-chain regression tests
         run: cd examples/hashchain && python3 test_hashchain.py
       - name: verify shipped sample timeline
-        run: cd examples/hashchain && python3 lifeos_hashchain.py verify ../vault/sample_timeline.jsonl
+        run: cd examples/hashchain && python3 lifegraph_hashchain.py verify ../vault/sample_timeline.jsonl

@@ -1,6 +1,6 @@
 # Glossary
 
-LIFE OS uses a small, deliberate vocabulary. Here is what the terms mean.
+LifeGraph uses a small, deliberate vocabulary. Here is what the terms mean.
 
 - **Mind** — A named AI specialist with a defined role, a voice, and a journal of its own. Minds work across domains and collaborate with each other and with you. They are not chatbots; their reasoning is written to disk.
 - **Chief of Staff** — The coordinating Mind that assigns incoming events to the right specialist, sets urgency, and tracks ownership.

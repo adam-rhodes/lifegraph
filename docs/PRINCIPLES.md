@@ -1,6 +1,6 @@
 # Design Principles
 
-These are the commitments that make LIFE OS what it is. A change that violates one of these is not a LIFE OS change.
+These are the commitments that make LifeGraph what it is. A change that violates one of these is not a LifeGraph change.
 
 ## 1. Disk as truth
 The file system is the database. Everything is plain Markdown or JSONL, human-readable, on hardware the user controls. Retrieval is named-path first, a discipline, with embeddings as an accelerant rather than the source of truth. If the whole system disappeared tomorrow, the files would still make sense in a text editor.

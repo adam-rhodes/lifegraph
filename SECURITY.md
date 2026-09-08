@@ -1,6 +1,6 @@
 # Security and Threat Model
 
-LIFE OS holds sensitive personal data (calendar, journals, relationships, health, finances). Its security posture is deliberate. This document is honest about what is protected and what is still hardening.
+LifeGraph holds sensitive personal data (calendar, journals, relationships, health, finances). Its security posture is deliberate. This document is honest about what is protected and what is still hardening.
 
 ## Threat model
 

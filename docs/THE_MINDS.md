@@ -1,6 +1,6 @@
 # The Minds
 
-The intelligence in LIFE OS is not a single assistant. It is a team of specialists called Minds. This document explains what they are and how they are meant to work together.
+The intelligence in LifeGraph is not a single assistant. It is a team of specialists called Minds. This document explains what they are and how they are meant to work together.
 
 ## What a Mind is
 

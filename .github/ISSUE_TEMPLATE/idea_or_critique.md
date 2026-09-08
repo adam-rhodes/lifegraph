@@ -5,7 +5,7 @@ title: ''
 labels: discussion
 ---
 
-**What part of LIFE OS is this about?**
+**What part of LifeGraph is this about?**
 (vision, architecture, a specific subsystem, the roadmap...)
 
 **Your idea, question, or critique**

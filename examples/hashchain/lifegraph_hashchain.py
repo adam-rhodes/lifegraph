@@ -1,5 +1,5 @@
 """
-LIFE OS append-only hash-chained journaling.
+LifeGraph append-only hash-chained journaling.
 
 Every entry written to a stream carries the sha256 of the previous entry, so the
 record is tamper-evident: altering, reordering, or deleting any past entry breaks
@@ -83,4 +83,4 @@ if __name__ == "__main__":
     import sys
     if len(sys.argv) >= 3 and sys.argv[1] == "verify":
         ok, d = verify(sys.argv[2]); print("OK" if ok else "BROKEN", d); sys.exit(0 if ok else 1)
-    print("usage: lifeos_hashchain.py verify <stream.jsonl>")
+    print("usage: lifegraph_hashchain.py verify <stream.jsonl>")

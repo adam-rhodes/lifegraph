@@ -1,6 +1,6 @@
 # Examples: the shape of reality
 
-These are small, runnable, anonymized examples of how LIFE OS stores things. The person here ("Alex Rivers") is fictional. No real user data is in this repo.
+These are small, runnable, anonymized examples of how LifeGraph stores things. The person here ("Alex Rivers") is fictional. No real user data is in this repo.
 
 ## Runnable: append-only hash-chained timeline
 
@@ -10,7 +10,7 @@ The core memory guarantee is that history is tamper-evident. This is real, teste
 cd hashchain
 
 # verify the sample timeline that ships with the repo (should pass)
-python3 lifeos_hashchain.py verify ../vault/sample_timeline.jsonl
+python3 lifegraph_hashchain.py verify ../vault/sample_timeline.jsonl
 
 # run the full regression suite (tamper, delete, reorder detection)
 python3 test_hashchain.py

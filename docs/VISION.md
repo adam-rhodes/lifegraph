@@ -8,11 +8,11 @@ The tools meant to help were designed for tasks, not for lives. A calendar does 
 
 ## The bet
 
-LIFE OS is a bet that the answer is not another app but an operating system for a life: a single layer that treats everything as connected, keeps a durable record you own, and runs intelligence that actually knows you and works on your behalf.
+LifeGraph is a bet that the answer is not another app but an operating system for a life: a single layer that treats everything as connected, keeps a durable record you own, and runs intelligence that actually knows you and works on your behalf.
 
 ## The four layers of a life
 
-LIFE OS is organized around the whole of a person's world, not a single slice of it:
+LifeGraph is organized around the whole of a person's world, not a single slice of it:
 
 1. **Personal** — health, growth, creativity, the inner life.
 2. **Social** — family, friendships, the relationships that make a life.

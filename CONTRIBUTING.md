@@ -1,6 +1,6 @@
-# Contributing to LIFE OS
+# Contributing to LifeGraph
 
-LIFE OS is being built in the open, early, on purpose. The best contributions right now are ideas, critique, and design pressure, not just code.
+LifeGraph is being built in the open, early, on purpose. The best contributions right now are ideas, critique, and design pressure, not just code.
 
 ## Ways to help
 

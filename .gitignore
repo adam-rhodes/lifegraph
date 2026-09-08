@@ -1,11 +1,11 @@
-# LIFE OS public repo carries ONLY documentation and shareable, generalized code.
+# LifeGraph public repo carries ONLY documentation and shareable, generalized code.
 # Personal data and secrets must never enter this repository.
 
 # secrets and keys
 *.env
 *.key
 *.pem
-.lifeos_model_keys.env
+.lifegraph_model_keys.env
 **/secrets/**
 
 # personal life data (never publish)

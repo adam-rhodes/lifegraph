@@ -1,6 +1,6 @@
 import os, json, tempfile, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import lifeos_hashchain as hc
+import lifegraph_hashchain as hc
 
 def run():
     d = tempfile.mkdtemp()

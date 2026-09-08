@@ -1,6 +1,6 @@
 # Roadmap
 
-LIFE OS is a running system with real gaps. This is an honest account of where it stands and what comes next. Reviewed against the project's own concept of operations and by independent multi-model critique.
+LifeGraph is a running system with real gaps. This is an honest account of where it stands and what comes next. Reviewed against the project's own concept of operations and by independent multi-model critique.
 
 ## Built and running
 
@@ -12,7 +12,7 @@ LIFE OS is a running system with real gaps. This is an honest account of where i
 
 ## In progress (the near-term priorities)
 
-These are the things that move LIFE OS from "many impressive parts" to "one integrated system." Ranked.
+These are the things that move LifeGraph from "many impressive parts" to "one integrated system." Ranked.
 
 1. **Off-site, versioned, encrypted backup.** Sync is not disaster recovery. A strict ignore policy, a clean baseline, and a daily push to an independent remote with a success alert.
 2. **Enforcement layer.** A small validation service that every significant write is routed through, so the rules are processes, not suggestions.

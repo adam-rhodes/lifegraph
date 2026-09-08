@@ -1,6 +1,6 @@
 # Architecture
 
-This document describes how LIFE OS is put together and why. It aims to be specific enough to critique.
+This document describes how LifeGraph is put together and why. It aims to be specific enough to critique.
 
 ## The shape of the system
 
