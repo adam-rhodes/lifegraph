@@ -40,7 +40,11 @@ def _last_hash(path: str) -> str:
                 last = line
     if not last:
         return GENESIS
-    return json.loads(last).get("entry_hash", GENESIS)
+    try:
+        return json.loads(last).get("entry_hash", GENESIS)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Corrupted stream: the last line of {path} is not valid JSON "
+                         f"(a partial write?). Manual recovery required. {e}")
 
 def append(path: str, data: dict, ts: str = None) -> dict:
     """Append one entry to the hash-chained stream at `path`. Returns the stored entry."""
