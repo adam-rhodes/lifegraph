@@ -8,7 +8,9 @@ entries; it does not by itself prevent truncation or wholesale replacement of th
 file (that needs off-box backup / external anchoring).
 
 Design principles honored: disk-as-truth (plain JSONL), append-only (never rewrites
-prior lines), enforcement-in-code (a single choke point for writes).
+prior lines), enforcement-in-code (a single choke point for writes, serialized with
+POSIX file locking; on Windows this degrades to cooperative single-writer discipline,
+not enforced by the OS).
 """
 import json, hashlib, os, tempfile, datetime
 try:

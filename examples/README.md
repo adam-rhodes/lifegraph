@@ -38,6 +38,8 @@ sed -i "s/meetup/HACKED/" /tmp/t.jsonl        # alter one past entry
 python3 reconstruct.py --timeline /tmp/t.jsonl # -> Chain integrity: BROKEN ... Refusing to reconstruct
 ```
 
+(Portability: on macOS use `sed -i '' "s/meetup/HACKED/"`; on Windows use WSL or just edit the file by hand.)
+
 That is provenance plus integrity in one command: a narrative that traces to stored evidence, and that will not build on a record it cannot prove is intact.
 
 ## The Vault, by example
@@ -48,3 +50,12 @@ That is provenance plus integrity in one command: a narrative that traces to sto
 
 Every fact has one home and one stable ID (`person/alex-rivers`). The chronological view and the
 by-entity view are two indexes onto these same files.
+
+## Runnable: build a vault from scratch
+
+To show the core path is not hand-curated around the shipped sample, `demo/init_minivault.py` creates a brand-new timeline in a temp directory, appends a few events through the same `append()` the tests use, verifies the chain, and reconstructs it:
+
+```bash
+cd demo
+python3 init_minivault.py
+```

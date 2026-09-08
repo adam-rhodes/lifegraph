@@ -37,7 +37,7 @@ Why files: longevity (readable in any editor, in any decade), portability (no lo
 There is a master timeline for the whole life and one timeline per entity. The rules:
 
 - Entries are only ever **added**. Found history is backfilled at its true date; corrections supersede prior entries additively; nothing is silently removed.
-- Each entry stores the **hash of the prior entry**, forming a chain. Any in-place edit, deletion, or reordering of existing entries breaks the chain and is detectable by `verify()`. Guarding against truncation or wholesale replacement of a file is a further layer (off-box backup, external anchoring), still to build.
+- Each entry stores the **hash of the prior entry**, forming a chain (applied to streams that use the hash-chain module; rollout across every write path is in progress). Any in-place edit, deletion, or reordering of existing entries breaks the chain and is detectable by `verify()`. Guarding against truncation or wholesale replacement of a file is a further layer (off-box backup, external anchoring), still to build.
 - Timelines compose: an entity's timeline rolls up into the master.
 
 ## Retrieval: named-path first

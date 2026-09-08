@@ -22,3 +22,5 @@ jobs:
           else
             echo "correctly refused tampered chain"
           fi
+      - name: mini-vault builds from scratch
+        run: cd examples/demo && python3 init_minivault.py

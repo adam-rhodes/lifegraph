@@ -34,8 +34,19 @@ def run():
     open(p4, "w").writelines(ls)
     ok, det = hc.verify(p4)
     if ok: fails.append(("T5 reorder detect", ok, det))
+    # T6: truncating the tail leaves a valid prefix -> NOT detected (documented limitation, not a bug)
+    p5 = os.path.join(d, "truncated.jsonl"); ls = open(p).readlines()[:-1]
+    open(p5, "w").writelines(ls)
+    ok, det = hc.verify(p5)
+    if not (ok and det["entries"] == 19): fails.append(("T6 tail truncation should still verify as a valid prefix", ok, det))
+    # T7: a malformed line -> detected
+    p6 = os.path.join(d, "garbage.jsonl")
+    with open(p6, "w") as f:
+        f.writelines(open(p).readlines()); f.write("this is not json\n")
+    ok, det = hc.verify(p6)
+    if ok or det.get("reason") != "unparseable json": fails.append(("T7 malformed line detect", ok, det))
     if fails:
         print("FAIL:", fails); sys.exit(1)
-    print("ALL PASS: clean-chain, genesis, linkage, tamper-detect, delete-detect, reorder-detect")
+    print("ALL PASS: clean-chain, genesis, linkage, tamper-detect, delete-detect, reorder-detect, truncation-is-known-gap, malformed-detect")
 
 run()

@@ -93,14 +93,15 @@ def main():
         print(f"  {name}" + (f" ({', '.join(extra)})" if extra else "") + f"   [from {node_file}]")
     print()
 
-    print("What happened, each line cited to the entry it came from:")
+    print("What happened, each line cited to its source entry (short entry hash shown):")
     sources = {}
     for e in entries:
         ts = e.get("ts", "")[:10]
         src = e.get("source", "?")
         sources[src] = sources.get(src, 0) + 1
         text = e.get("text", "").strip()
-        print(f"  {ts}  {text:<52} [{src} / {e.get('event','')}]")
+        h = e.get("entry_hash", "")[:8]
+        print(f"  {ts}  {text:<52} [{src} / {e.get('event','')}]  #{h}")
     print()
 
     first = entries[0].get("ts", "")[:10]
