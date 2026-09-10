@@ -2,9 +2,9 @@
 
 ## The problem
 
-Every person generates intelligence constantly: schedules, relationships, ideas, obligations, worries, goals, and quiet questions about who they are becoming. That information lives everywhere and nowhere, in an inbox, a calendar, a notes app, a chat thread, the back of the mind at 2 a.m. No system sees the whole picture. So things fall through the cracks, the same decisions get re-litigated, and the throughline of a life gets lost in the noise of managing it.
+Every person generates a continuous record: schedules, relationships, decisions, obligations, goals, health, money, and the notes they write to themselves. That information lives everywhere and nowhere, in an inbox, a calendar, a notes app, a chat thread, the back of the mind at 2 a.m. No system sees the whole picture. So things fall through the cracks, the same decisions get re-litigated, and the throughline of a life gets lost in the noise of managing it.
 
-The tools meant to help were designed for tasks, not for lives. A calendar does not know why the meeting matters. A notes app does not remember what you said last week. A chatbot forgets you the moment the window closes. And for people whose brains already fight overwhelm, the fragmentation is not an inconvenience; it is the thing standing between them and the life they want.
+The tools meant to help were designed for tasks, not for lives. A calendar does not know why the meeting matters. A notes app does not remember what you said last week. A chatbot forgets you the moment the window closes. For people who already struggle to hold everything in their head, that fragmentation is the main obstacle, not a small inconvenience.
 
 ## The bet
 

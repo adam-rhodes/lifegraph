@@ -36,4 +36,4 @@ Minds do not depend on any single model provider. A broker routes each Mind's wo
 
 ## Emergence
 
-The roster is not fixed at a number. When a domain of the user's life recurs and grows, that is the signal to give it a dedicated Mind. The team is meant to be alive, shifting as the person it serves changes.
+The roster is not fixed at a number. When a domain of the user's life recurs and grows, that is the signal to give it a dedicated Mind. The roster changes as the person's life changes: Minds are added when a domain grows and retired when it goes quiet.
