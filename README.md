@@ -88,7 +88,7 @@ To see what that record is *for*, run the [evidence-backed reconstruction demo](
 
 Full detail in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 
-## What works today
+## What works today (on the author's instance; see what this repo ships, above)
 
 - Self-hosted server (FastAPI + Caddy) with a progressive web app across many life domains.
 - ~35 scheduled Minds journaling through a cost-capped, model-agnostic broker (observed cost so far: a few dollars a month against a hard $200 cap).
