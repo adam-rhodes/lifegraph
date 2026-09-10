@@ -40,3 +40,9 @@ node_modules/
 
 # locks
 *.lock
+
+# runtime state and generated journals from the example runtime
+examples/vault/_runtime/
+examples/vault/council/
+examples/vault/minds/*/
+examples/vault/minds/journal_timeline.jsonl

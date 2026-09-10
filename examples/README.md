@@ -59,3 +59,7 @@ To show the core path is not hand-curated around the shipped sample, `demo/init_
 cd demo
 python3 init_minivault.py
 ```
+
+## Runnable: the runtime slice (roster, scheduled tick, spend cap, council)
+
+`runtime/` is the public rebuild of what the private instance runs every day: a roster of Minds, a tick that runs whoever is due (am/pm, skip-if-journaled, single-instance lock), a model router with a daily spend cap and a hash-chained ledger, and a council that puts an answer through two blind reviewers and an evidence-gated chair, all on files. `python3 runtime/test_runtime.py` needs no model. See [runtime/README.md](runtime/README.md).
