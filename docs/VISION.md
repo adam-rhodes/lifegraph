@@ -34,4 +34,4 @@ Most tools serve one layer and ignore the rest. The value is in the connections 
 
 ## The measure of success
 
-Measured, not felt: the record stays durable and readable in a plain editor years later; every claim the system makes can be traced to a dated source line; the person can ask a question about their own life and get an answer grounded in that record; and, over months, decisions and follow-through get better in ways that show up in the record itself. The ambition behind this is larger than software, and this project treats it as a direction to build toward rather than a claim to have arrived.
+Measured, not felt: the record stays durable and readable in a plain editor years later; every claim the system makes can be traced to a dated source line; the person can ask a question about their own life and get an answer grounded in that record; and, over months, decisions and follow-through get better in ways that show up in the record itself.

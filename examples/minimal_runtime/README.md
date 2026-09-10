@@ -2,6 +2,8 @@
 
 The smallest honest slice of how the private instance works, in one stdlib-only file you can read top to bottom.
 
+Prerequisites: Python 3.9+ (no packages). For the local path, [Ollama](https://ollama.com) installed and running (`ollama serve` starts it; `ollama pull llama3.2` fetches the default model, about 2 GB; `LIFEGRAPH_MODEL=gemma2:2b` picks a smaller one). Or skip Ollama and set `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` with `--provider openai` / `anthropic`. `--dry-run` needs nothing at all.
+
 ```bash
 cd examples/minimal_runtime
 python3 run_mind.py --vault ../vault --mind finance --dry-run     # see the exact prompt, call nothing

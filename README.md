@@ -12,7 +12,7 @@ Three commitments define it:
 - **The record is the product.** Append-only, timestamped, uniquely identified, and hash-chained so tampering is detectable. The memory is an audit trail, not a vector-DB black box.
 - **Intelligence is a team, not a chatbot.** Named specialists collaborate and journal in the open, routed through a model-agnostic broker so no vendor is load-bearing. Your data stays on your disk; only the specific text a task needs is sent to a model. When that model is a remote API, that text leaves your machine and is subject to the provider's policies; point the broker at a local model if you want strictly on-box processing.
 
-> **Status: early and honest.** A working system running daily for its first user, not a finished product. **This repository ships the concept, the data schemas, and the runnable hash-chain core.** The full runtime (the FastAPI server, the Minds, the broker, the web app) runs on the author's private instance and is being sanitized for public release. This README marks what works versus what is still aspirational, and the [roadmap](docs/ROADMAP.md) tracks the gap. We are building in the open on purpose.
+> **Status: early and honest.** A working system running daily for its first user, not a finished product. **This repository ships the concept, the data shapes ([examples/vault/SCHEMA.md](examples/vault/SCHEMA.md)), the runnable hash-chain core, and a minimal one-Mind runtime.** The full runtime (the FastAPI server, the Minds, the broker, the web app) runs on the author's private instance and is being sanitized for public release. This README marks what works versus what is still aspirational, and the [roadmap](docs/ROADMAP.md) tracks the gap. We are building in the open on purpose.
 
 ---
 
