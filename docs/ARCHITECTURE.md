@@ -38,6 +38,8 @@ There is a master timeline for the whole life and one timeline per entity. The r
 
 - Entries are only ever **added**. Found history is backfilled at its true date; corrections supersede prior entries additively; nothing is silently removed.
 - Each entry stores the **hash of the prior entry**, forming a chain (applied to streams that use the hash-chain module; rollout across every write path is in progress). Any in-place edit, deletion, or reordering of existing entries breaks the chain and is detectable by `verify()`. Guarding against truncation or wholesale replacement of a file is a further layer (off-box backup, external anchoring), still to build.
+- What the chain is for, stated plainly: anyone with write access to the file can recompute every hash after an edit, so the chain is not proof to a third party. It protects the person from silent alteration of their own record by their own software or by a bug, and it makes revocation honest: a revoked fact is superseded by a revocation entry and dropped from every projection, and the original line stays as a tombstone in a chain only the person holds. Cryptographic erasure with re-keying is not implemented and not claimed.
+- Models and the record: the record and the continuity layer stay on hardware the person controls; a model call, local or remote, receives the slice of the record placed in one prompt and stores nothing. The runtime's router (`examples/runtime`) defaults to a local model and only reaches a remote one when configured to. Whether that is acceptable is a per-deployment choice, set explicitly, not assumed.
 - Timelines compose: an entity's timeline rolls up into the master.
 
 ## Retrieval: named-path first
